@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles3.css">
+  <title>MosqDetecto — Contact & Feedback</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<style>
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: darkgreen;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    right: 0;
+    height: 60px;
+    z-index: 2;
+  }
+
+  /* Contact and layout containers */
+  .contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+    padding-bottom: 30px;
+  }
+
+  .feedback-card, .info-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 300px;
+    box-sizing: border-box;
+  }
+
+  h3 {
+    color: #1b4d3e;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e2f0e2;
+    padding-bottom: 8px;
+  }
+
+  .info-description {
+    font-size: 14px; 
+    color: #666; 
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .contact-methods {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-methods li {
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Footer area */
+  footer {
+    background-color: #113311;
+    color: #b0cbb0;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  footer strong {
+    color: #ffffff;
+  }
+
+  /* Responsive iframe container adjustments */
+  @media (max-width: 768px) {
+    .feedback-card {
+      padding: 15px;
+    }
+  } 
+</style>
+</head>
+
+<body>
+      <header>
+          <div style="display: flex; align-items: center; gap: 15px;">
+              <img src="MOSQ1.png" width="50px" height="50px" id="logo" alt="Logo">
+              <h1 style="margin: 0; font-size: 24px; color: lightgreen">MOSQ DETECTO</h1>
+          </div>
+          <a href="settings.html" class="button"><img src="settings1.png" width="40px" height="40px" alt="Settings"></a> 
+      </header>
+
+      <div class="sidenav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="brgy.html">Barangays</a>
+          <a href="download.html">Download App</a> 
+      </div>
+
+      <div class="main" style="margin-top: 80px; padding: 20px;">
+          <h2>GET IN TOUCH</h2>
+          
+          <div class="contact-container">
+              
+              <div class="feedback-card">
+                  <h3>📝 Official Google Feedback Form</h3>
+                  <p class="info-description">
+                      We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails.
+                  </p>
+                  <div style="width: 100%; overflow: hidden; border-radius: 8px; border: 1px solid #e2f0e2; -webkit-overflow-scrolling: touch;">
+                      <iframe 
+                          src="https://docs.google.com/forms/d/e/1FAIpQLSexxI4TPfSx3L-zFfZJ7kF2z--KiJyEOZlSHG7yyW51-xV29w/viewform?usp=dialog"
+                          width="100%" 
+                          height="800" 
+                          scrolling="yes"
+                          style="border: none; display: block; width: 100%;">
+                          Loading…
+                      </iframe>
+                  </div>
+              </div>
+
+              <div class="info-card">
+                  <h3>📞 Contact Information</h3>
+                  <p class="info-description">
+                      Have questions about our vector tracing or want to report a breeding hotspot block in your local zone? Reach out to us directly:
+                  </p>
+                  <ul class="contact-methods">
+                      <li><strong>Email:</strong> TripleA@gmail.com</li>
+                      <li><strong>Website:</strong> https://angelfrancis143.github.io/mosqdetecto/</li>
+                      <li><strong>Location:</strong> Jaro District, Iloilo City, Philippines</li>
+                  </ul>
+              </div>
+
+          </div>
+
+          <footer>
+              <div>&copy; 2026 <strong>MosqDetecto Project</strong>. All Rights Reserved.</div>
+              <div>Designed and Developed by <strong>ViGuedenrus Defeater Team</strong>.</div>
+          </footer>
+      </div>
+</body>
+</html>
