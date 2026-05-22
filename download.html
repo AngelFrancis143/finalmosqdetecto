@@ -112,6 +112,65 @@
     color: #444;
     margin-top: 20px;
   }
+
+  .instructions-container {
+    background: #f9f9f9;
+    border: 2px solid #4F7942;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 25px;
+  }
+
+  .instructions-container h3 {
+    color: #1b4d3e;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .instruction-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .instruction-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-left: 4px solid darkgreen;
+    border-radius: 4px;
+  }
+
+  .step-number {
+    background-color: darkgreen;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .step-content h4 {
+    margin: 0 0 5px 0;
+    color: #1b4d3e;
+    font-size: 15px;
+  }
+
+  .step-content p {
+    margin: 0;
+    color: #555;
+    font-size: 13px;
+    line-height: 1.5;
+  }
 </style>
 </head>
 
@@ -154,11 +213,11 @@
                       <p style="font-size: 13px; color: #666; margin: 5px 0 0 0;">Click the web link below to pull the setup files:</p>
                   </div>
                   
-                  <a href="https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view?fbclid=IwY2xjawR7dU9leHRuA2FlbQIxMABicmlkETFuV1hZRkJkMkJnTGhNaUtkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5M" class="drive-link">
+                  <a href="https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view?fbclid=IwY2xjawR7dU9leHRuA2FlbQIxMABicmlkETFuV1hZRkJkMkJnTGhNaUtkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIw[...]
                       https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view
                   </a>
                   
-                  <a href="https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view?fbclid=IwY2xjawR7dU9leHRuA2FlbQIxMABicmlkETFuV1hZRkJkMkJnTGhNaUtkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5M">
+                  <a href="https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view?fbclid=IwY2xjawR7dU9leHRuA2FlbQIxMABicmlkETFuV1hZRkJkMkJnTGhNaUtkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIw[...]
                       <div class="action-label" style="margin-bottom: 0; cursor: pointer;">Download Here</div>
                   </a>
               </div>
@@ -166,8 +225,38 @@
           </div>
 
           <div class="step-note">
-              <strong>Note:</strong> After the installation is complete, please ensure that you turned on your mobile device's location services (GPS) to allow real-time vector transmission logs to be recorded.
+              <strong>Note:</strong> After the installation is complete, please ensure that you turned on your mobile device's location services (GPS) to allow real-time vector transmission logs [...]
           </div>
+
+          <div class="instructions-container">
+              <h3>📱 Setup Instructions</h3>
+              <div class="instruction-steps">
+                  <div class="instruction-step">
+                      <div class="step-number">1</div>
+                      <div class="step-content">
+                          <h4>Download the APK</h4>
+                          <p>Scan the QR code or click the download link above. Before installing, ensure your mobile device allows permissions to install apps from unknown sources in your security settings.</p>
+                      </div>
+                  </div>
+
+                  <div class="instruction-step">
+                      <div class="step-number">2</div>
+                      <div class="step-content">
+                          <h4>Install & Enable Location</h4>
+                          <p>Open the downloaded APK file and install the application. Once installed, open the app and navigate to settings to enable location services (GPS). This allows the app to track and transmit real-time data.</p>
+                      </div>
+                  </div>
+
+                  <div class="instruction-step">
+                      <div class="step-number">3</div>
+                      <div class="step-content">
+                          <h4>Start Using MosqDetecto</h4>
+                          <p>You're all set! The app is now ready to use. Begin scanning for mosquito detection and help protect your community from mosquito-borne diseases.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
       </div>
 </body>
 </html>
