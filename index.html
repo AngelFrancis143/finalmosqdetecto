@@ -20,6 +20,12 @@
     right: 0;
     height: 60px;
     z-index: 2;
+    transition: background-color 0.3s;
+  }
+
+  body.dark-mode header {
+    background-color: #0a3d1a;
+    border-bottom-color: #444;
   }
 
   .hero-container {
@@ -32,6 +38,13 @@
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  body.dark-mode .hero-container {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
 
   .hero-text {
@@ -44,6 +57,11 @@
     font-size: 22px;
     margin-top: 0;
     margin-bottom: 15px;
+    transition: color 0.3s;
+  }
+
+  body.dark-mode .hero-text h3 {
+    color: #81c784;
   }
 
   .hero-text p {
@@ -51,6 +69,11 @@
     line-height: 1.6;
     color: #333333;
     margin-bottom: 20px;
+    transition: color 0.3s;
+  }
+
+  body.dark-mode .hero-text p {
+    color: #ccc;
   }
 
   .features-grid {
@@ -65,8 +88,14 @@
     border-left: 4px solid darkgreen;
     padding: 12px;
     border-radius: 4px;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s;
     cursor: pointer;
+  }
+
+  body.dark-mode .feature-card {
+    background: #1e5631;
+    border-left-color: #81c784;
+    color: #e0e0e0;
   }
 
   .feature-card:hover {
@@ -74,16 +103,30 @@
     background: #e2f0e2;
   }
 
+  body.dark-mode .feature-card:hover {
+    background: #2d7a3a;
+  }
+
   .feature-card strong {
     color: darkgreen;
     display: block;
     margin-bottom: 4px;
     font-size: 14px;
+    transition: color 0.3s;
+  }
+
+  body.dark-mode .feature-card strong {
+    color: #81c784;
   }
 
   .feature-card span {
     font-size: 12px;
     color: #555555;
+    transition: color 0.3s;
+  }
+
+  body.dark-mode .feature-card span {
+    color: #aaa;
   }
 
   /* Side Graphics Panel Wrapper */
@@ -117,6 +160,12 @@
     padding: 15px;
     box-sizing: border-box;
     overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  body.dark-mode .combat-banner {
+    background-color: #1e5631;
+    border-color: #4a7c59;
   }
 
   .combat-banner img {
@@ -130,6 +179,36 @@
     font-size: 13px;
     color: #2e7d32;
     font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  body.dark-mode .combat-banner span {
+    color: #81c784;
+  }
+
+  body {
+    transition: background-color 0.3s;
+  }
+
+  body.dark-mode {
+    background-color: #1a1a1a !important;
+  }
+
+  .sidenav a {
+    transition: background-color 0.3s;
+  }
+
+  body.dark-mode .sidenav a {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+  }
+
+  .main {
+    transition: background-color 0.3s;
+  }
+
+  body.dark-mode .main h2 {
+    color: #e0e0e0;
   }
 </style>
 </head>
@@ -159,7 +238,7 @@
                   <h3>Empowering Communities to Fight Dengue Together</h3>
                   <p>
                       Welcome to the home of <strong>MosqDetecto</strong>, a digital initiative built by team <em>ViGuedenrus Defeater</em>. 
-                      Our technology helps track local mosquito breeding vectors, eliminate stagnant water vulnerabilities, and lower transmission curves across Jaro District neighborhoods. Explore our modules below to interact with our real-time tracking network:
+                      Our technology helps track local mosquito breeding vectors, eliminate stagnant water vulnerabilities, and lower transmission curves across Jaro District neighborhoods. Explore our interactive maps, resources, and educational materials to join the fight against dengue in your community.
                   </p>
                   
                   <div class="features-grid">
@@ -189,5 +268,16 @@
 
           </div>
       </div>
+
+      <script>
+        // Apply saved dark mode and language settings on page load
+        window.addEventListener('DOMContentLoaded', function() {
+          const savedSettings = JSON.parse(localStorage.getItem('userSettings')) || {};
+          
+          if (savedSettings.darkMode) {
+            document.body.classList.add('dark-mode');
+          }
+        });
+      </script>
 </body>
 </html>
