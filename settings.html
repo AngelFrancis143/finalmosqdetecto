@@ -530,6 +530,42 @@
 
     // Run this on every page load
     window.addEventListener('DOMContentLoaded', applySavedSettingsGlobally);
+
+    // ... (Keep your translations and loadSettings/saveSettings functions exactly as they are) ...
+
+// Corrected Tagalog translation for "Settings saved successfully!"
+translations.tl['notification-success'] = 'Matagumpay na nai-save ang mga setting!';
+
+// Dark mode toggle
+document.getElementById('darkModeToggle').addEventListener('change', function() {
+  document.body.classList.toggle('dark-mode');
+});
+
+// Language change
+document.getElementById('language').addEventListener('change', function() {
+  applyLanguage(this.value);
+});
+
+// Form submission
+document.getElementById('settingsForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  saveSettings();
+  
+  // Show notification
+  const notification = document.getElementById('notification');
+  const currentLang = document.getElementById('language').value;
+  const message = translations[currentLang]['notification-success'];
+  
+  notification.textContent = message;
+  notification.style.display = 'block';
+  
+  setTimeout(() => {
+    notification.style.display = 'none';
+  }, 3000);
+});
+
+// Load settings on page load
+window.addEventListener('DOMContentLoaded', loadSettings);
   </script>
 
 </body>
