@@ -432,7 +432,7 @@
         'dark-mode-desc': 'Lumipat sa mas madilim na tema upang makatipid ng battery.',
         'label-language': 'Wika',
         'btn-save-text': 'I-save ang Mga Pagbabago',
-        'notification-success': 'Matagumpay na nakatipid ang mga setting!'
+        'notification-success': 'Matagumpay na nai-save ang mga setting!'
       }
     };
 
@@ -449,9 +449,11 @@
       document.getElementById('darkModeToggle').checked = savedSettings.darkMode || false;
       document.getElementById('language').value = currentLanguage;
 
-      // Apply dark mode if saved
+      // Apply dark mode immediately based on saved setting
       if (savedSettings.darkMode) {
         document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
       }
 
       // Apply language
@@ -484,22 +486,26 @@
       localStorage.setItem('userSettings', JSON.stringify(settings));
     }
 
-    // Dark mode toggle
+    // Instant Visual Dark Mode UI Toggle
     document.getElementById('darkModeToggle').addEventListener('change', function() {
-      document.body.classList.toggle('dark-mode');
+      if (this.checked) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
     });
 
-    // Language change
+    // Language change engine
     document.getElementById('language').addEventListener('change', function() {
       applyLanguage(this.value);
     });
 
-    // Form submission
+    // Form submission management
     document.getElementById('settingsForm').addEventListener('submit', function(e) {
       e.preventDefault();
       saveSettings();
       
-      // Show notification
+      // Show confirmation alert
       const notification = document.getElementById('notification');
       const currentLang = document.getElementById('language').value;
       const message = translations[currentLang]['notification-success'];
@@ -512,60 +518,8 @@
       }, 3000);
     });
 
-    // Load settings on page load
+    // Run when DOM builds
     window.addEventListener('DOMContentLoaded', loadSettings);
-
-    // Apply saved settings to other pages
-    function applySavedSettingsGlobally() {
-      const savedSettings = JSON.parse(localStorage.getItem('userSettings')) || {};
-      
-      if (savedSettings.darkMode) {
-        document.body.classList.add('dark-mode');
-      }
-      
-      if (savedSettings.language) {
-        applyLanguage(savedSettings.language);
-      }
-    }
-
-    // Run this on every page load
-    window.addEventListener('DOMContentLoaded', applySavedSettingsGlobally);
-
-    // ... (Keep your translations and loadSettings/saveSettings functions exactly as they are) ...
-
-// Corrected Tagalog translation for "Settings saved successfully!"
-translations.tl['notification-success'] = 'Matagumpay na nai-save ang mga setting!';
-
-// Dark mode toggle
-document.getElementById('darkModeToggle').addEventListener('change', function() {
-  document.body.classList.toggle('dark-mode');
-});
-
-// Language change
-document.getElementById('language').addEventListener('change', function() {
-  applyLanguage(this.value);
-});
-
-// Form submission
-document.getElementById('settingsForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  saveSettings();
-  
-  // Show notification
-  const notification = document.getElementById('notification');
-  const currentLang = document.getElementById('language').value;
-  const message = translations[currentLang]['notification-success'];
-  
-  notification.textContent = message;
-  notification.style.display = 'block';
-  
-  setTimeout(() => {
-    notification.style.display = 'none';
-  }, 3000);
-});
-
-// Load settings on page load
-window.addEventListener('DOMContentLoaded', loadSettings);
   </script>
 
 </body>
