@@ -269,15 +269,35 @@
           </div>
       </div>
 
-      <script>
-        // Apply saved dark mode and language settings on page load
-        window.addEventListener('DOMContentLoaded', function() {
-          const savedSettings = JSON.parse(localStorage.getItem('userSettings')) || {};
-          
-          if (savedSettings.darkMode) {
-            document.body.classList.add('dark-mode');
+     <script>
+  function applySavedSettingsGlobally() {
+    // 1. Fetch settings from localStorage
+    const savedSettings = JSON.parse(localStorage.getItem('userSettings')) || {};
+    
+    // 2. Apply Dark Mode instantly if enabled
+    if (savedSettings.darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    
+    // 3. Optional: Apply Global Language Translations 
+    // If you have elements on your other pages with IDs like 'settings-title', this will translate them.
+    if (savedSettings.language && typeof translations !== 'undefined') {
+      const lang = savedSettings.language;
+      if (translations[lang]) {
+        Object.keys(translations[lang]).forEach(key => {
+          const element = document.getElementById(key);
+          if (element) {
+            element.textContent = translations[lang][key];
           }
         });
-      </script>
+      }
+    }
+  }
+
+  // Run the check as soon as the DOM is ready
+  window.addEventListener('DOMContentLoaded', applySavedSettingsGlobally);
+</script>
 </body>
 </html>
