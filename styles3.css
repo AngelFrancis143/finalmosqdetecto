@@ -53,6 +53,11 @@ h2 {
 	font-size: 25px;
 	text-align: center;
 }
+/* Dark Mode Overrides */
+  body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
