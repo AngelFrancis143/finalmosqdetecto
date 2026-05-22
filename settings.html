@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Account Settings</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <style>
     /* Reset and Base Styles */
     * {
@@ -18,6 +19,12 @@
       color: #333;
       padding: 20px;
       line-height: 1.5;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
     }
 
     /* Layout Container */
@@ -36,7 +43,7 @@
 
     .btn-back {
       text-decoration: none;
-      color: #007bff;
+      color: darkgreen;
       font-size: 16px;
       font-weight: 500;
       display: inline-flex;
@@ -48,9 +55,18 @@
       color: #0056b3;
     }
 
+    body.dark-mode .btn-back {
+      color: #81c784;
+    }
+
     h1 {
       font-size: 24px;
       color: #111;
+      transition: color 0.3s;
+    }
+
+    body.dark-mode h1 {
+      color: #e0e0e0;
     }
 
     /* Settings Card */
@@ -60,17 +76,29 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       padding: 20px;
       margin-bottom: 20px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark-mode .settings-card {
+      background: #2a2a2a;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .section-title {
       font-size: 16px;
       font-weight: 600;
-      color: #666;
+      color: darkgreen;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 15px;
       border-bottom: 1px solid #eee;
       padding-bottom: 8px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    body.dark-mode .section-title {
+      color: #81c784;
+      border-bottom: 1px solid #444;
     }
 
     /* Settings Row */
@@ -85,6 +113,10 @@
       border-bottom: 1px solid #f9f9f9;
     }
 
+    body.dark-mode .settings-row:not(:last-child) {
+      border-bottom: 1px solid #444;
+    }
+
     .settings-info {
       padding-right: 15px;
     }
@@ -93,12 +125,22 @@
       font-weight: 500;
       font-size: 16px;
       color: #222;
+      transition: color 0.3s;
+    }
+
+    body.dark-mode .settings-label {
+      color: #e0e0e0;
     }
 
     .settings-description {
       font-size: 13px;
       color: #666;
       margin-top: 2px;
+      transition: color 0.3s;
+    }
+
+    body.dark-mode .settings-description {
+      color: #999;
     }
 
     /* Form Inputs */
@@ -112,6 +154,11 @@
       font-weight: 500;
       margin-bottom: 6px;
       color: #444;
+      transition: color 0.3s;
+    }
+
+    body.dark-mode .form-group label {
+      color: #ccc;
     }
 
     input[type="text"],
@@ -121,14 +168,23 @@
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      font-size: 16px; 
+      font-size: 16px;
       background-color: #fff;
-      transition: border-color 0.2s;
+      color: #333;
+      transition: border-color 0.2s, background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode input[type="text"],
+    body.dark-mode input[type="email"],
+    body.dark-mode select {
+      background-color: #3a3a3a;
+      color: #e0e0e0;
+      border-color: #555;
     }
 
     input:focus, select:focus {
       outline: none;
-      border-color: #007bff;
+      border-color: darkgreen;
     }
 
     /* Custom Toggle Switch */
@@ -171,7 +227,7 @@
     }
 
     input:checked + .slider {
-      background-color: #007bff;
+      background-color: darkgreen;
     }
 
     input:checked + .slider:before {
@@ -182,7 +238,7 @@
     .btn-save {
       display: block;
       width: 100%;
-      background-color: #007bff;
+      background-color: darkgreen;
       color: white;
       border: none;
       padding: 14px;
@@ -194,7 +250,24 @@
     }
 
     .btn-save:hover {
-      background-color: #0056b3;
+      background-color: #0a3d1a;
+    }
+
+    .notification {
+      display: none;
+      padding: 12px 16px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      transition: display 0.3s;
+    }
+
+    body.dark-mode .notification {
+      background-color: #1e5631;
+      color: #81c784;
+      border-color: #2d7a3a;
     }
 
     /* Responsive Adjustments */
@@ -212,59 +285,61 @@
 
   <div class="settings-container">
     <div class="settings-header">
-      <a href="cuartero.html" href="index.html" class="btn-back">&#8592; Back</a>
-      <h1>Settings</h1>
+      <a href="index.html" class="btn-back">&#8592; Back</a>
+      <h1 id="settings-title">Settings</h1>
     </div>
 
-    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Settings saved!');">
+    <div class="notification" id="notification"></div>
+
+    <form id="settingsForm">
       
       <div class="settings-card">
-        <div class="section-title">Profile Information</div>
+        <div class="section-title" id="profile-section">Profile Information</div>
         
         <div class="form-group">
-          <label for="username">Full Name</label>
-          <input type="text" id="username" name="username" value="John Doe" placeholder="Your name">
+          <label for="username" id="label-fullname">Full Name</label>
+          <input type="text" id="username" name="username" placeholder="Your name">
         </div>
 
         <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" value="johndoe@example.com" placeholder="Your email">
+          <label for="email" id="label-email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Your email">
         </div>
       </div>
 
       <div class="settings-card">
-        <div class="section-title">Notifications</div>
+        <div class="section-title" id="notifications-section">Notifications</div>
         
         <div class="settings-row">
           <div class="settings-info">
-            <div class="settings-label">Email Notifications</div>
-            <div class="settings-description">Receive weekly updates and activity summaries.</div>
+            <div class="settings-label" id="email-notif-label">Email Notifications</div>
+            <div class="settings-description" id="email-notif-desc">Receive weekly updates and activity summaries.</div>
           </div>
           <label class="switch">
-            <input type="checkbox" checked>
+            <input type="checkbox" id="emailNotif" checked>
             <span class="slider"></span>
           </label>
         </div>
 
         <div class="settings-row">
           <div class="settings-info">
-            <div class="settings-label">Push Notifications</div>
-            <div class="settings-description">Get instant alerts on your mobile device.</div>
+            <div class="settings-label" id="push-notif-label">Push Notifications</div>
+            <div class="settings-description" id="push-notif-desc">Get instant alerts on your mobile device.</div>
           </div>
           <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" id="pushNotif">
             <span class="slider"></span>
           </label>
         </div>
       </div>
 
       <div class="settings-card">
-        <div class="section-title">Preferences</div>
+        <div class="section-title" id="preferences-section">Preferences</div>
         
         <div class="settings-row">
           <div class="settings-info">
-            <div class="settings-label">Dark Mode</div>
-            <div class="settings-description">Switch to a darker theme to save battery.</div>
+            <div class="settings-label" id="dark-mode-label">Dark Mode</div>
+            <div class="settings-description" id="dark-mode-desc">Switch to a darker theme to save battery.</div>
           </div>
           <label class="switch">
             <input type="checkbox" id="darkModeToggle">
@@ -273,19 +348,189 @@
         </div>
 
         <div class="form-group" style="margin-top: 15px;">
-          <label for="language">Language</label>
+          <label for="language" id="label-language">Language</label>
           <select id="language" name="language">
             <option value="en" selected>English</option>
             <option value="es">Español</option>
             <option value="fr">Français</option>
+            <option value="tl">Tagalog</option>
           </select>
         </div>
       </div>
 
-      <button type="submit" class="btn-save">Save Changes</button>
+      <button type="submit" class="btn-save" id="btn-save-text">Save Changes</button>
 
     </form>
   </div>
+
+  <script>
+    // Translation dictionary
+    const translations = {
+      en: {
+        'settings-title': 'Settings',
+        'profile-section': 'Profile Information',
+        'label-fullname': 'Full Name',
+        'label-email': 'Email Address',
+        'notifications-section': 'Notifications',
+        'email-notif-label': 'Email Notifications',
+        'email-notif-desc': 'Receive weekly updates and activity summaries.',
+        'push-notif-label': 'Push Notifications',
+        'push-notif-desc': 'Get instant alerts on your mobile device.',
+        'preferences-section': 'Preferences',
+        'dark-mode-label': 'Dark Mode',
+        'dark-mode-desc': 'Switch to a darker theme to save battery.',
+        'label-language': 'Language',
+        'btn-save-text': 'Save Changes',
+        'notification-success': 'Settings saved successfully!'
+      },
+      es: {
+        'settings-title': 'Configuración',
+        'profile-section': 'Información del Perfil',
+        'label-fullname': 'Nombre Completo',
+        'label-email': 'Dirección de Correo',
+        'notifications-section': 'Notificaciones',
+        'email-notif-label': 'Notificaciones por Correo',
+        'email-notif-desc': 'Reciba actualizaciones semanales y resúmenes de actividad.',
+        'push-notif-label': 'Notificaciones Push',
+        'push-notif-desc': 'Obtenga alertas instantáneas en su dispositivo móvil.',
+        'preferences-section': 'Preferencias',
+        'dark-mode-label': 'Modo Oscuro',
+        'dark-mode-desc': 'Cambia a un tema más oscuro para ahorrar batería.',
+        'label-language': 'Idioma',
+        'btn-save-text': 'Guardar Cambios',
+        'notification-success': '¡Configuración guardada exitosamente!'
+      },
+      fr: {
+        'settings-title': 'Paramètres',
+        'profile-section': 'Informations de Profil',
+        'label-fullname': 'Nom Complet',
+        'label-email': 'Adresse Email',
+        'notifications-section': 'Notifications',
+        'email-notif-label': 'Notifications par Email',
+        'email-notif-desc': 'Recevez des mises à jour hebdomadaires et des résumés d\'activité.',
+        'push-notif-label': 'Notifications Push',
+        'push-notif-desc': 'Recevez des alertes instantanées sur votre appareil mobile.',
+        'preferences-section': 'Préférences',
+        'dark-mode-label': 'Mode Sombre',
+        'dark-mode-desc': 'Basculer vers un thème plus sombre pour économiser la batterie.',
+        'label-language': 'Langue',
+        'btn-save-text': 'Enregistrer les Modifications',
+        'notification-success': 'Paramètres enregistrés avec succès!'
+      },
+      tl: {
+        'settings-title': 'Mga Setting',
+        'profile-section': 'Impormasyon ng Profile',
+        'label-fullname': 'Buong Pangalan',
+        'label-email': 'Email Address',
+        'notifications-section': 'Mga Notipikasyon',
+        'email-notif-label': 'Email Notifications',
+        'email-notif-desc': 'Makatanggap ng linggong update at activity summaries.',
+        'push-notif-label': 'Push Notifications',
+        'push-notif-desc': 'Kumuha ng instant alerts sa inyong mobile device.',
+        'preferences-section': 'Mga Preference',
+        'dark-mode-label': 'Dark Mode',
+        'dark-mode-desc': 'Lumipat sa mas madilim na tema upang makatipid ng battery.',
+        'label-language': 'Wika',
+        'btn-save-text': 'I-save ang Mga Pagbabago',
+        'notification-success': 'Matagumpay na nakatipid ang mga setting!'
+      }
+    };
+
+    // Load settings from localStorage
+    function loadSettings() {
+      const savedSettings = JSON.parse(localStorage.getItem('userSettings')) || {};
+      const currentLanguage = savedSettings.language || 'en';
+      
+      // Load form values
+      document.getElementById('username').value = savedSettings.username || 'John Doe';
+      document.getElementById('email').value = savedSettings.email || 'johndoe@example.com';
+      document.getElementById('emailNotif').checked = savedSettings.emailNotif !== false;
+      document.getElementById('pushNotif').checked = savedSettings.pushNotif || false;
+      document.getElementById('darkModeToggle').checked = savedSettings.darkMode || false;
+      document.getElementById('language').value = currentLanguage;
+
+      // Apply dark mode if saved
+      if (savedSettings.darkMode) {
+        document.body.classList.add('dark-mode');
+      }
+
+      // Apply language
+      applyLanguage(currentLanguage);
+    }
+
+    // Apply language translations
+    function applyLanguage(lang) {
+      if (translations[lang]) {
+        Object.keys(translations[lang]).forEach(key => {
+          const element = document.getElementById(key);
+          if (element) {
+            element.textContent = translations[lang][key];
+          }
+        });
+      }
+    }
+
+    // Save settings to localStorage
+    function saveSettings() {
+      const settings = {
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        emailNotif: document.getElementById('emailNotif').checked,
+        pushNotif: document.getElementById('pushNotif').checked,
+        darkMode: document.getElementById('darkModeToggle').checked,
+        language: document.getElementById('language').value
+      };
+
+      localStorage.setItem('userSettings', JSON.stringify(settings));
+    }
+
+    // Dark mode toggle
+    document.getElementById('darkModeToggle').addEventListener('change', function() {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Language change
+    document.getElementById('language').addEventListener('change', function() {
+      applyLanguage(this.value);
+    });
+
+    // Form submission
+    document.getElementById('settingsForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      saveSettings();
+      
+      // Show notification
+      const notification = document.getElementById('notification');
+      const currentLang = document.getElementById('language').value;
+      const message = translations[currentLang]['notification-success'];
+      
+      notification.textContent = message;
+      notification.style.display = 'block';
+      
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 3000);
+    });
+
+    // Load settings on page load
+    window.addEventListener('DOMContentLoaded', loadSettings);
+
+    // Apply saved settings to other pages
+    function applySavedSettingsGlobally() {
+      const savedSettings = JSON.parse(localStorage.getItem('userSettings')) || {};
+      
+      if (savedSettings.darkMode) {
+        document.body.classList.add('dark-mode');
+      }
+      
+      if (savedSettings.language) {
+        applyLanguage(savedSettings.language);
+      }
+    }
+
+    // Run this on every page load
+    window.addEventListener('DOMContentLoaded', applySavedSettingsGlobally);
+  </script>
 
 </body>
 </html>
