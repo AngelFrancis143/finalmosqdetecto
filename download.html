@@ -119,6 +119,7 @@
     border-radius: 8px;
     padding: 20px;
     margin-top: 25px;
+    margin-bottom: 25px;
   }
 
   .instructions-container h3 {
@@ -171,6 +172,99 @@
     font-size: 13px;
     line-height: 1.5;
   }
+
+  /* Phase Grid Styles */
+  .phases-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .phases-container h3 {
+    color: #1b4d3e;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .phase-box {
+    background: #90EE90;
+    border: 3px solid darkgreen;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .phase-badge {
+    background-color: darkgreen;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .phase-title {
+    color: #1b4d3e;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .phase-content {
+    color: #333;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .phase-content ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+  }
+
+  .phase-content li {
+    margin-bottom: 8px;
+  }
+
+  .download-button-link {
+    display: inline-block;
+    background-color: darkgreen;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+  }
+
+  .download-button-link:hover {
+    background-color: #006600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-decoration: none;
+    color: white;
+  }
 </style>
 </head>
 
@@ -210,26 +304,27 @@
               <div class="download-box">
                   <div>
                       <h3>Option 2: Direct URL</h3>
-                      <p style="font-size: 13px; color: #666; margin: 5px 0 0 0;">Click the web link below to pull the setup files:</p>
+                      <p style="font-size: 13px; color: #666; margin: 5px 0 0 0;">Click the link below or button to download:</p>
                   </div>
                   
-                  <a href="https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view?fbclid=IwY2xjawR7dU9leHRuA2FlbQIxMABicmlkETFuV1hZRkJkMkJnTGhNaUtkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIw[...]
+                  <a href="https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view" class="drive-link">
                       https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view
                   </a>
                   
-                  <a href="https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view?fbclid=IwY2xjawR7dU9leHRuA2FlbQIxMABicmlkETFuV1hZRkJkMkJnTGhNaUtkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIw[...]
-                      <div class="action-label" style="margin-bottom: 0; cursor: pointer;">Download Here</div>
+                  <a href="https://drive.google.com/file/d/1LOBQTLB3gZeyh0ddkhAFgVMVN9Sg9Wg9/view" class="download-button-link">
+                      Download Here
                   </a>
               </div>
 
           </div>
 
           <div class="step-note">
-              <strong>Note:</strong> After the installation is complete, please ensure that you turned on your mobile device's location services (GPS) to allow real-time vector transmission logs [...]
+              <strong>Note:</strong> After the installation is complete, please ensure that you turned on your mobile device's location services (GPS) to allow real-time vector transmission logs and accurate mosquito detection.
           </div>
 
+          <!-- Initial Setup Instructions -->
           <div class="instructions-container">
-              <h3>📱 Setup Instructions</h3>
+              <h3>📱 Initial Setup Instructions</h3>
               <div class="instruction-steps">
                   <div class="instruction-step">
                       <div class="step-number">1</div>
@@ -243,7 +338,7 @@
                       <div class="step-number">2</div>
                       <div class="step-content">
                           <h4>Install & Enable Location</h4>
-                          <p>Open the downloaded APK file and install the application. Once installed, open the app and navigate to settings to enable location services (GPS). This allows the app to track and transmit real-time data.</p>
+                          <p>Open the downloaded APK file and install the application. Once installed, open the app and navigate to settings to enable location services (GPS). This allows the app to track and geotagging your reports accurately.</p>
                       </div>
                   </div>
 
@@ -254,6 +349,98 @@
                           <p>You're all set! The app is now ready to use. Begin scanning for mosquito detection and help protect your community from mosquito-borne diseases.</p>
                       </div>
                   </div>
+              </div>
+          </div>
+
+          <!-- 6 Phase Workflow -->
+          <div class="phases-container">
+              <h3>🔄 Application Workflow Phases</h3>
+              <div class="phases-grid">
+                  
+                  <div class="phase-box">
+                      <div class="phase-header">
+                          <div class="phase-badge">1</div>
+                          <h4 class="phase-title">User Reporting and Image Capture</h4>
+                      </div>
+                      <div class="phase-content">
+                          <ul>
+                              <li><strong>Enable GPS/Location Services</strong> - Activate location tracking on your device</li>
+                              <li><strong>Capture Images</strong> - Take pictures of potential mosquito breeding grounds</li>
+                              <li>Identify suspicious areas in your community</li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div class="phase-box">
+                      <div class="phase-header">
+                          <div class="phase-badge">2</div>
+                          <h4 class="phase-title">AI-Based Image Analysis</h4>
+                      </div>
+                      <div class="phase-content">
+                          <ul>
+                              <li><strong>Intelligent Scanning</strong> - AI analyzes photos for breeding indicators</li>
+                              <li><strong>Detection Results</strong> - System identifies environmental risk factors</li>
+                              <li>Automated environmental assessment of captured areas</li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div class="phase-box">
+                      <div class="phase-header">
+                          <div class="phase-badge">3</div>
+                          <h4 class="phase-title">Data Processing and Geotagging</h4>
+                      </div>
+                      <div class="phase-content">
+                          <ul>
+                              <li><strong>Organized Storage</strong> - Reports organized by Barangay, Sitio, or Zone</li>
+                              <li><strong>Location Tagging</strong> - Each entry geotagged with GPS coordinates</li>
+                              <li>Digital map interface integration for localized monitoring</li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div class="phase-box">
+                      <div class="phase-header">
+                          <div class="phase-badge">4</div>
+                          <h4 class="phase-title">Community Mapping and Aggregation</h4>
+                      </div>
+                      <div class="phase-content">
+                          <ul>
+                              <li><strong>Area Marking</strong> - System sets a tag for detected breeding grounds</li>
+                              <li><strong>Community Visibility</strong> - Marks visible to other community members</li>
+                              <li>Collaborative community awareness and response</li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div class="phase-box">
+                      <div class="phase-header">
+                          <div class="phase-badge">5</div>
+                          <h4 class="phase-title">Risk Classification and Alerts</h4>
+                      </div>
+                      <div class="phase-content">
+                          <ul>
+                              <li><strong>Risk Levels</strong> - Low, Moderate, or High risk classification</li>
+                              <li><strong>Automated Recommendations</strong> - Prevention and cleaning suggestions</li>
+                              <li>Based on frequency and severity of reports in each area</li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div class="phase-box">
+                      <div class="phase-header">
+                          <div class="phase-badge">6</div>
+                          <h4 class="phase-title">QR Code Integration for Accessibility</h4>
+                      </div>
+                      <div class="phase-content">
+                          <ul>
+                              <li><strong>Quick Access</strong> - Scan QR code to access the website</li>
+                              <li><strong>Easy Distribution</strong> - Share via posters and materials</li>
+                              <li>Convenient access for community members and stakeholders</li>
+                          </ul>
+                      </div>
+                  </div>
+
               </div>
           </div>
 
